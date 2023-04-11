@@ -15,7 +15,6 @@ public class HelloApplication extends Application {
         System.out.println("Hello Wassim, I am Omar");
         stage.setTitle("Hello!");
         stage.setScene(scene);
-        System.out.println("Shu ma ken!");
         stage.show();
     }
 
