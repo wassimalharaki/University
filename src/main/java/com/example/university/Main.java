@@ -8,11 +8,14 @@ import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.logging.Level;
+
 public class Main extends Application {
 
+    {java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);}
     private Session session;
 
-    Transaction transaction;
+    Transaction transaction = null;
 
     public Main() {
         session = HibernateUtil.getSessionFactory().openSession();
@@ -24,6 +27,7 @@ public class Main extends Application {
         Pane pane = new Pane();
         Label lbl = new Label("Testing Hibernate");
         pane.getChildren().add(lbl);
+        System.out.println("success!");
         Scene scene = new Scene(pane, 320, 240);
         stage.setTitle("Hello!");
         stage.setScene(scene);
