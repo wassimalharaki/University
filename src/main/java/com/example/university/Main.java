@@ -2,10 +2,12 @@ package com.example.university;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import java.sql.*;
 
 public class Main extends Application {
 
@@ -21,8 +23,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         Pane pane = new Pane();
+        Label lbl = new Label("Testing Hibernate");
+        pane.getChildren().add(lbl);
         Scene scene = new Scene(pane, 320, 240);
-        System.out.println("final test");
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
