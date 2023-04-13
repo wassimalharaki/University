@@ -13,7 +13,6 @@ public class HibernateUtil {
     public static SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
-
                 Configuration configuration = new Configuration();
 
                 Properties settings = new Properties();
