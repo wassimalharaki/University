@@ -10,3 +10,5 @@ https://gluonhq.com/products/javafx/
 4- Change username and password in HibernateUtil.java (currently username: root password: root)
 
 5- Enjoy
+
+6- hbb l alb ty
