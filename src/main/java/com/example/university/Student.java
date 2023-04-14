@@ -7,7 +7,7 @@ import java.util.List;
 public class Student extends User {
 
     public List<Course> getRegisteredCourses() {
-        String hql = "SELECT course From Registration where user = :student";
+        String hql = "SELECT course From Registration WHERE user = :student";
         Query query = Main.session.createQuery(hql);
         query.setParameter("student", this);
         return (List<Course>) query.getResultList();
@@ -31,7 +31,7 @@ public class Student extends User {
     }
 
     public void dropCourse(Course course) {
-        String hql = "From Registration where user = :student and course = :course";
+        String hql = "FROM Registration WHERE user = :student AND course = :course";
         Query query = Main.session.createQuery(hql);
         query.setParameter("student", this);
         query.setParameter("course", course);

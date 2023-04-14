@@ -1,6 +1,9 @@
 package com.example.university;
 
 import jakarta.persistence.*;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -47,6 +50,13 @@ public class Course {
     }
     public boolean getAvailable() {
         return available;
+    }
+
+    public static List<Course> getAvailableCourses() {
+        String hql = "FROM Course WHERE available = :available";
+        Query query = Main.session.createQuery(hql);
+        query.setParameter("available", true);
+        return (List<Course>) query.getResultList();
     }
 
     public String toString() {
