@@ -18,6 +18,9 @@ public class Course {
     @JoinColumn(name = "instructor_id")
     private User instructor;
 
+    @Column(name = "is_available")
+    private boolean available;
+
     public void setId(int id) {
         this.id = id;
     }
@@ -37,5 +40,19 @@ public class Course {
     }
     public User getInstructor() {
         return instructor;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+    public boolean getAvailable() {
+        return available;
+    }
+
+    public String toString() {
+        return "ID: " + id
+                + "\nName: " + name
+                + "\nInstructor Name: " + instructor.getName()
+                + "\nAvailable: " + available;
     }
 }

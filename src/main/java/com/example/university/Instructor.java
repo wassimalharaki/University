@@ -4,15 +4,9 @@ import java.util.ArrayList;
 
 public class Instructor extends User {
 
-    ArrayList<Course> coursesInstructed = new ArrayList<>();
-
-    public Instructor() {
-        setRole("i");
-    }
-
-    public ArrayList<Course> getCoursesInstructed() {
-        return coursesInstructed;
-    }
+//    public ArrayList<Course> getCoursesInstructed() {
+//        ;
+//    }
 
     public ArrayList<Student> getStudentsRegisteredInCourse(Course course) {
         ArrayList<Student> studentsRegisteredInCourse = new ArrayList<>();

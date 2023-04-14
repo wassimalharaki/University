@@ -7,7 +7,9 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
+import java.util.List;
 import java.util.logging.Level;
 
 public class Main extends Application {
@@ -35,6 +37,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch();
+        Main main = new Main();
+//        launch();
     }
 }
