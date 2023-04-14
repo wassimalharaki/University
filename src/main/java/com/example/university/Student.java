@@ -36,8 +36,6 @@ public class Student extends User {
         query.setParameter("student", this);
         query.setParameter("course", course);
         List<Registration> registrationList = query.getResultList();
-        if (registrationList.size() != 1)
-            System.out.println("ERROR IN HQL");
         Registration registration = registrationList.get(0);
         try {
             Main.session.delete(registration);
