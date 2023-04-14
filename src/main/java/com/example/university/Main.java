@@ -13,9 +13,9 @@ import java.util.logging.Level;
 public class Main extends Application {
 
     {java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);}
-    private Session session;
+    public static Session session;
 
-    Transaction transaction = null;
+    public static Transaction transaction = null;
 
     public Main() {
         session = HibernateUtil.getSessionFactory().openSession();
@@ -35,7 +35,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Main main = new Main();
         launch();
     }
 }
