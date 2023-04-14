@@ -4,10 +4,11 @@ import java.util.ArrayList;
 
 public class Student extends User {
 
+    private ArrayList<Course> CoursesRegistered = new ArrayList<>();
+
     public Student() {
         setRole("s");
     }
-    private ArrayList<Course> CoursesRegistered = new ArrayList<>();
 
     public ArrayList<Course> getRegisteredCourses() {
         return CoursesRegistered;
