@@ -6,12 +6,9 @@ import org.hibernate.*;
 
 public class DBUtils {
 
-    private Session session;
-    Transaction transaction = null;
-
     public DBUtils(){
-        session = HibernateUtil.getSessionFactory().openSession();
-        transaction = session.beginTransaction();
+        Main.session = HibernateUtil.getSessionFactory().openSession();
+        Main.transaction = Main.session.beginTransaction();
     }
 
     public static void changeScene(Event event, String fmxlFile, String title, int width, int height) {
@@ -21,6 +18,8 @@ public class DBUtils {
 
     }
 
-    public static void signUp(ActionEvent event, String username, String email, String pass, String confPass){}
+    public static void signUp(ActionEvent event, String username, String email, String pass, String confPass){
+
+    }
 
 }
