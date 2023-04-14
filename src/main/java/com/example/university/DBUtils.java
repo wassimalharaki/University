@@ -25,12 +25,12 @@ public class DBUtils {
         try {
         FXMLLoader loader = new FXMLLoader(DBUtils.class.getResource(fmxlFile));
         root = loader.load();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
 
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    Image icon = new Image(DBUtils.class.getResourceAsStream("images/logo.png"));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Image icon = new Image(DBUtils.class.getResourceAsStream("images/logo.png"));
         stage.getIcons().add(icon);
         stage.setTitle(title);
         stage.setScene(new Scene(root, width, height));
@@ -53,26 +53,23 @@ public class DBUtils {
             alert.show();
             return;
         }
-        else {
-            User current = results.get(0);
-            String retrievedPass = current.getPassword();
-            if (BCrypt.checkpw(pass, retrievedPass)) {
-                if (current.getRole().equals("s")) {
-                    changeScene(event, "LoggedInStudent.fxml", "Welcome Student", 1000, 800);
-                } else if (current.getRole().equals("a")) {
-                    changeScene(event, "LoggedInAdmin.fxml", "Welcome Admin", 1000, 800);
-                } else {
-                    changeScene(event, "LoggedInInstructor.fxml", "Welcome Instructor", 1000, 800);
-                }
-            } else{
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("The provided credentials are incorrect");
-                alert.show();
-                return;
-            }
+
+        User current = results.get(0);
+        String retrievedPass = current.getPassword();
+        if (!BCrypt.checkpw(pass, retrievedPass)) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setContentText("The provided credentials are incorrect");
+            alert.show();
+            return;
         }
 
-
+        if (current.getRole().equals("s")) {
+            changeScene(event, "LoggedInStudent.fxml", "Welcome Student", 1000, 800);
+        } else if (current.getRole().equals("a")) {
+            changeScene(event, "LoggedInAdmin.fxml", "Welcome Admin", 1000, 800);
+        } else if (current.getRole().equals("i")) {
+            changeScene(event, "LoggedInInstructor.fxml", "Welcome Instructor", 1000, 800);
+        }
     }
 
     public static void signUp(ActionEvent event, String name, String email, String pass, String confPass) {
@@ -102,17 +99,15 @@ public class DBUtils {
         user.setPassword(hashedPassword);
         user.setRole("s");
 
-
         try {
             Main.session.save(user);
             if (!Main.transaction.getStatus().equals("COMMITTED"))
                 Main.transaction.commit();
             changeScene(event, "LoggedInStudent.fxml", "Welcome Student", 1000, 800);
         } catch (Exception e) {
-            if (Main.transaction != null) {
+            if (Main.transaction != null)
                 if (!Main.transaction.getStatus().equals("COMMITTED"))
                     Main.transaction.rollback();
-            }
             System.out.println(e.getMessage());
         }
     }
