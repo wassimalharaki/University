@@ -23,11 +23,11 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_login.setOnAction(event -> {
             if (!tf_email.getText().trim().isEmpty() && !pf_password.getText().trim().isEmpty())
-                DBUtils.login(tf_email.getText(), pf_password.getText());
+                HomeUtil.login(tf_email.getText(), pf_password.getText());
         });
 
         btn_register.setOnAction(event -> {
-            DBUtils.changeScene("signup.fxml", "Sign Up", 1000, 800);
+            HomeUtil.changeScene("signup.fxml", "Sign Up", 1000, 800);
         });
     }
 }

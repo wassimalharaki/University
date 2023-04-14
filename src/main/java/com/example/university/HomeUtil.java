@@ -7,7 +7,7 @@ import org.hibernate.query.Query;
 import org.mindrot.jbcrypt.BCrypt;
 import java.util.List;
 
-public class DBUtils {
+public class HomeUtil {
 
     public static void changeScene(String fxmlFile, String title, int width, int height) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlFile));
