@@ -20,8 +20,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Column(name = "is_admin")
-    private boolean isAdmin;
+    @Column(name = "role")
+    private String role;
 
     public void setId(int id) {
         this.id = id;
@@ -51,10 +51,10 @@ public class User {
         return password;
     }
 
-    public void setIsAdmin(boolean isAdmin) {
-        this.isAdmin = isAdmin;
+    public void setRole(String role) {
+        this.role = role;
     }
-    public boolean getIsAdmin() {
-        return isAdmin;
+    public String getRole() {
+        return role;
     }
 }
