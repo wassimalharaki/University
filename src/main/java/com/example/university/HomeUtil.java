@@ -50,7 +50,7 @@ public class HomeUtil {
             changeScene("instructor.fxml", "Welcome Instructor", 1000, 800);
     }
 
-    public static void signUp(String name, String email, String pass, String confPass) {
+    public static void signup(String name, String email, String pass, String confPass) {
         if (!pass.equals(confPass)) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Make sure you entered the password correctly in both fields.");
@@ -70,7 +70,7 @@ public class HomeUtil {
             return;
         }
 
-        User user = new Student();
+        User user = new User();
         user.setName(name);
         user.setEmail(email);
         String hashedPassword = BCrypt.hashpw(pass, BCrypt.gensalt());

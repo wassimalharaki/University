@@ -27,7 +27,7 @@ public class SignupController implements Initializable {
                     && !tf_email.getText().trim().isEmpty()
                     && !pf_password.getText().trim().isEmpty()
                     && !pf_confPassword.getText().isEmpty()) {
-                HomeUtil.signUp(tf_name.getText(), tf_email.getText().toString(),
+                HomeUtil.signup(tf_name.getText(), tf_email.getText().toString(),
                                 pf_password.getText(), pf_confPassword.getText());
             }
             else {
