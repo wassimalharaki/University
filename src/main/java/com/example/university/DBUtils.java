@@ -29,7 +29,7 @@ public class DBUtils {
         }
 
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Image icon = new Image(DBUtils.class.getResourceAsStream("images/logo.png"));
+        Image icon = new Image(DBUtils.class.getResourceAsStream("/images/logo.png"));
         stage.getIcons().add(icon);
         stage.setTitle(title);
         stage.setScene(new Scene(root, width, height));
