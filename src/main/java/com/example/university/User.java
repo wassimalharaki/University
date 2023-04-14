@@ -57,4 +57,13 @@ public class User {
     public String getRole() {
         return role;
     }
+
+    public String toString() {
+        String role = (this.role.equals("s"))? "Student":
+                (this.role.equals("i"))? "Instructor": "Admin";
+        return "ID: " + id
+                + "\nName: " + name
+                + "\nEmail: " + email
+                + "\nRole: " + role;
+    }
 }

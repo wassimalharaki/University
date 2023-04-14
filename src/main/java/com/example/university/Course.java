@@ -1,6 +1,9 @@
 package com.example.university;
 
 import jakarta.persistence.*;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -17,6 +20,9 @@ public class Course {
     @ManyToOne
     @JoinColumn(name = "instructor_id")
     private User instructor;
+
+    @Column(name = "is_available")
+    private boolean available;
 
     public void setId(int id) {
         this.id = id;
@@ -37,5 +43,26 @@ public class Course {
     }
     public User getInstructor() {
         return instructor;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+    public boolean getAvailable() {
+        return available;
+    }
+
+    public static List<Course> getAvailableCourses() {
+        String hql = "FROM Course WHERE available = :available";
+        Query query = Main.session.createQuery(hql);
+        query.setParameter("available", true);
+        return (List<Course>) query.getResultList();
+    }
+
+    public String toString() {
+        return "ID: " + id
+                + "\nName: " + name
+                + "\nInstructor Name: " + instructor.getName()
+                + "\nAvailable: " + available;
     }
 }

@@ -39,4 +39,10 @@ public class Registration {
     public Course getCourse() {
         return course;
     }
+
+    public String toString() {
+        return "ID: " + id
+                + "\nStudent Name: " + user.getName()
+                + "\nCourse Name: " + course.getName();
+    }
 }
