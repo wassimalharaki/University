@@ -59,6 +59,12 @@ public class Course {
         return (List<Course>) query.getResultList();
     }
 
+    public static List<Course> getAllCourses() {
+        String hql = "FROM Course";
+        Query query = Main.session.createQuery(hql);
+        return (List<Course>) query.getResultList();
+    }
+
     public String toString() {
         return "ID: " + id
                 + "\nName: " + name

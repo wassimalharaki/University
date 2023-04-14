@@ -22,10 +22,9 @@ public class Student extends User {
             if (!Main.transaction.getStatus().equals("COMMITTED"))
                 Main.transaction.commit();
         } catch (Exception e) {
-            if (Main.transaction != null) {
+            if (Main.transaction != null)
                 if (!Main.transaction.getStatus().equals("COMMITTED"))
                     Main.transaction.rollback();
-            }
             System.out.println(e.getMessage());
         }
     }
