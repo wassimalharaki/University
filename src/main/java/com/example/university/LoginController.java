@@ -29,5 +29,9 @@ public class LoginController implements Initializable {
                 DBUtils.login(event, tf_email.getText(), pf_password.getText());
             }
         });
+
+        btn_register.setOnAction(event -> {
+            DBUtils.changeScene(event, "SignUp.fxml", "Sign Up", 700, 400);
+        });
     }
 }
