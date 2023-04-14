@@ -23,15 +23,14 @@ public class SignUpController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         btn_signup.setOnAction(event -> {
-            if(!tf_username.getText().trim().isEmpty() &&
-                    !tf_email.getText().trim().isEmpty() &&
-                    !pf_password.getText().trim().isEmpty() &&
-                    !pf_confPassword.getText().isEmpty())
-            {
-                String email = tf_email.getText().toString() + "@balamand.edu.lb";
-                DBUtils.signUp(event, tf_username.getText(), email, pf_password.getText(), pf_confPassword.getText());
-            } else{
-                System.out.println("Please fill in all information");
+            if (!tf_username.getText().trim().isEmpty()
+                    && !tf_email.getText().trim().isEmpty()
+                    && !pf_password.getText().trim().isEmpty()
+                    && !pf_confPassword.getText().isEmpty()) {
+                DBUtils.signUp(tf_username.getText(), tf_email.getText().toString(),
+                                pf_password.getText(), pf_confPassword.getText());
+            }
+            else {
                 Alert alert = new Alert(Alert.AlertType.ERROR);
                 alert.setContentText("Please fill in all information to sign up!");
                 alert.show();
@@ -39,7 +38,7 @@ public class SignUpController implements Initializable {
         });
 
         btn_login.setOnAction(event -> {
-            DBUtils.changeScene(event, "Login.fxml","Login",700,400);
+            DBUtils.changeScene("login.fxml","Login",1000,800);
         });
 
     }

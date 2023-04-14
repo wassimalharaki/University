@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.LoginController">
+   <children>
+      <BorderPane prefHeight="800.0" prefWidth="1000.0">
+         <left>
+            <Pane prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #0c559c;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/bg.jpg" />
+                     </image>
+                  </ImageView>
+                  <Pane prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #070675; -fx-opacity: 0.9;">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="130.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="90.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="University of Balamand">
+                           <font>
+                              <Font name="System Bold" size="20.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="131.0" layoutY="783.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 - All Rights Reserved.">
+                           <font>
+                              <Font name="System Bold" size="10.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+               </children>
+            </Pane>
+         </left>
+         <center>
+            <Pane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
+               <children>
+                  <Text layoutX="258.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+                     <font>
+                        <Font name="Times New Roman" size="36.0" />
+                     </font>
+                  </Text>
+                  <TextField fx:id="tf_email" focusTraversable="false" layoutX="157.0" layoutY="348.0" prefHeight="35.0" prefWidth="284.0" promptText="Email" />
+                  <PasswordField fx:id="pf_password" focusTraversable="false" layoutX="157.0" layoutY="401.0" prefHeight="35.0" prefWidth="284.0" promptText="Password" />
+                  <Button fx:id="btn_login" layoutX="157.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #070675;" text="Login" textFill="WHITE">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_register" layoutX="304.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black;" text="Register Now">
+                     <font>
+                        <Font name="Times New Roman" size="18.0" />
+                     </font>
+                  </Button>
+                  <CheckBox layoutX="157.0" layoutY="453.0" mnemonicParsing="false" text="Remember me" textFill="#535353" />
+                  <Text fill="#535353" layoutX="355.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password" />
+               </children>
+            </Pane>
+         </center>
+      </BorderPane>
+   </children>
+</AnchorPane>

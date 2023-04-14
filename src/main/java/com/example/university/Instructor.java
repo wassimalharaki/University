@@ -13,6 +13,12 @@ public class Instructor extends User {
         query.setParameter("instructor", this);
         return (List<Course>) query.getResultList();
     }
+
+    public static List<User> getStudentsRegisteredInCourse(int id) {
+        Course course = new Course();
+        course.setId(id);
+        return getStudentsRegisteredInCourse(course);
+    }
     public static List<User> getStudentsRegisteredInCourse(Course course) {
         List<User> studentsRegisteredInCourse = new ArrayList<>();
         String hql = "From Registration WHERE course = :course";
