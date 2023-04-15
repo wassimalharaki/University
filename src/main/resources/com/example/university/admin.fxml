@@ -1,14 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.collections.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.university.AdminController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.AdminController">
+   <children>
+      <Button fx:id="btn_getUsers" layoutX="29.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Get Users" />
+      <ComboBox fx:id="combo_users" layoutX="29.0" layoutY="101.0" prefHeight="25.0" prefWidth="97.0" value="All">
+          <items>
+              <FXCollections fx:factory="observableArrayList">
+                  <String fx:value="All" />
+                  <String fx:value="Students" />
+                  <String fx:value="Instructors" />
+                  <String fx:value="Admins" />
+              </FXCollections>
+          </items>
+      </ComboBox>
+      <Button fx:id="btn_getCourses" layoutX="179.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Get Courses" />
+      <TableView fx:id="table_results" layoutX="50.0" layoutY="258.0" prefHeight="518.0" prefWidth="900.0">
+          <placeholder>
+              <Label text="No Results" />
+          </placeholder>
+      </TableView>
+      <Pane fx:id="pane_userAction" layoutX="50.0" layoutY="258.0" prefHeight="518.0" prefWidth="900.0" style="-fx-border-color: black; -fx-border-width: 5;" visible="false">
+         <children>
+            <Button fx:id="btn_userConfirm" layoutX="405.0" layoutY="446.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="90.0" text="CONFIRM" />
+            <TextField fx:id="tf_name" layoutX="108.0" layoutY="54.0" />
+            <TextField fx:id="tf_email" layoutX="545.0" layoutY="54.0" />
+            <TextField fx:id="tf_role" layoutX="108.0" layoutY="185.0" />
+            <Label alignment="CENTER" layoutX="472.0" layoutY="54.0" prefHeight="25.0" prefWidth="46.0" text="Email" />
+            <Label alignment="CENTER" layoutX="45.0" layoutY="185.0" prefHeight="25.0" prefWidth="46.0" text="Role" />
+            <Label alignment="CENTER" layoutX="26.0" layoutY="121.0" prefHeight="25.0" prefWidth="65.0" text="Password" />
+            <Label alignment="CENTER" layoutX="45.0" layoutY="54.0" prefHeight="25.0" prefWidth="46.0" text="Name" />
+            <Label alignment="CENTER" layoutX="411.0" layoutY="121.0" prefHeight="25.0" prefWidth="107.0" text="Confirm Password" />
+            <PasswordField fx:id="pf_password" layoutX="108.0" layoutY="121.0" />
+            <PasswordField fx:id="pf_confirmPassword" layoutX="545.0" layoutY="121.0" />
+         </children></Pane>
+      <Pane fx:id="pane_courseAction" layoutX="50.0" layoutY="257.0" prefHeight="518.0" prefWidth="900.0" style="-fx-border-color: black; -fx-border-width: 5;" visible="false">
+         <children>
+            <Label layoutX="39.0" layoutY="57.0" prefHeight="25.0" prefWidth="78.0" text="Course Name" />
+            <Label layoutX="39.0" layoutY="131.0" prefHeight="25.0" prefWidth="90.0" text="Instructor" />
+            <Label layoutX="39.0" layoutY="223.0" prefHeight="25.0" prefWidth="90.0" text="Available" />
+            <TextField fx:id="tf_courseName" layoutX="165.0" layoutY="57.0" />
+            <Button fx:id="btn_courseConfirm" layoutX="388.0" layoutY="417.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="124.0" text="CONFIRM" />
+            <ComboBox fx:id="combo_instructors" layoutX="164.0" layoutY="100.0" prefHeight="87.0" prefWidth="313.0" promptText="Choose an Instructor" />
+            <ComboBox fx:id="combo_available" layoutX="164.0" layoutY="223.0" prefWidth="150.0">
+                <items>
+                    <FXCollections fx:factory="observableArrayList">
+                        <String fx:value="true" />
+                        <String fx:value="false" />
+                    </FXCollections>
+                </items>
+            </ComboBox>
+         </children></Pane>
+      <Button fx:id="btn_addUser" layoutX="386.0" layoutY="56.0" mnemonicParsing="false" text="Add User" />
+      <Button fx:id="btn_addCourse" layoutX="507.0" layoutY="56.0" mnemonicParsing="false" text="Add Course" />
+   </children>
 </AnchorPane>

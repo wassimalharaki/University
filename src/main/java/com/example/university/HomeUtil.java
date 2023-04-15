@@ -75,8 +75,7 @@ public class HomeUtil {
         User user = new User();
         user.setName(name);
         user.setEmail(email);
-        String hashedPassword = BCrypt.hashpw(pass, BCrypt.gensalt());
-        user.setPassword(hashedPassword);
+        user.setPassword(BCrypt.hashpw(pass, BCrypt.gensalt()));
         user.setRole("s");
 
         try {

@@ -41,7 +41,7 @@ public class Admin extends User {
         User user = new User();
         user.setName(name);
         user.setEmail(email);
-        user.setPassword(password);
+        user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
         user.setRole(role);
         try {
             Main.session.save(user);
@@ -78,9 +78,15 @@ public class Admin extends User {
     public void updateUser(User user, String name, String email, String password, String role) {
         user.setName(name);
         user.setEmail(email);
-        user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+        if (password.isEmpty()) {
+            User userFromDB = Main.session.get(User.class, user.getId());
+            user.setPassword(userFromDB.getPassword());
+        }
+        else
+            user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
         user.setRole(role);
         try {
+            Main.transaction.begin();
             Main.session.update(user);
             if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
                 Main.transaction.commit();
@@ -125,15 +131,16 @@ public class Admin extends User {
     public void updateCourse(int id, String name, int instructorId, boolean available) {
         Course course = new Course();
         course.setId(id);
-        Instructor instructor = new Instructor();
+        User instructor = new User();
         instructor.setId(instructorId);
         updateCourse(course, name, instructor, available);
     }
-    public void updateCourse(Course course, String name, Instructor instructor, boolean available) {
+    public void updateCourse(Course course, String name, User instructor, boolean available) {
         course.setName(name);
         course.setInstructor(instructor);
         course.setAvailable(available);
         try {
+            Main.transaction.begin();
             Main.session.update(course);
             if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
                 Main.transaction.commit();
