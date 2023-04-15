@@ -12,8 +12,8 @@ public class HomeUtil {
 
     public static void changeScene(String fxmlFile, String title, int width, int height) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlFile));
+        Main.stage.setTitle(title);
         try {
-            Main.stage.setTitle(title);
             Main.stage.setScene(new Scene(fxmlLoader.load(), width, height));
         } catch (Exception e) {
             System.out.println(e.getMessage());
