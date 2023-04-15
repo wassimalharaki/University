@@ -114,6 +114,7 @@ public class AdminController implements Initializable {
                 box_action.getChildren().addAll(btn_update, btn_remove);
 
                 Map<String, Object> item = new HashMap<>();
+
                 item.put("name", user.getName());
                 item.put("email", user.getEmail());
                 item.put("role", user.getRole());
