@@ -1,14 +1,19 @@
 package com.example.university;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.MapValueFactory;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class StudentController implements Initializable {
@@ -20,51 +25,75 @@ public class StudentController implements Initializable {
     Button btn_getAllCourses;
 
     @FXML
-    VBox vbox_results;
+    TableView table_results;
+
+    @FXML
+    Label lbl_noResults;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         btn_getRegisteredCourses.setOnAction(event -> {
-            vbox_results.getChildren().clear();
+            lbl_noResults.setVisible(false);
+            table_results.getColumns().clear();
+            table_results.getItems().clear();
             Student student = new Student();
             student.setId(Main.id);
             List<Course> registeredCourses = student.getRegisteredCourses();
             if (registeredCourses.size() == 0) {
-                vbox_results.getChildren().add(new Label("NO COURSES"));
+                lbl_noResults.setVisible(true);
                 return;
             }
+            TableColumn<Map, String> c1 = new TableColumn<>("Course Name");
+            c1.setCellValueFactory(new MapValueFactory<>("courseName"));
+            TableColumn<Map, String> c2 = new TableColumn<>("Instructor Name");
+            c2.setCellValueFactory(new MapValueFactory<>("instructorName"));
+            TableColumn<Map, String> c3 = new TableColumn<>("Available");
+            c3.setCellValueFactory(new MapValueFactory<>("available"));
+            TableColumn<Map, Button> c4 = new TableColumn<>("Action");
+            c4.setCellValueFactory(new MapValueFactory<>("button"));
+            table_results.getColumns().add(c1);
+            table_results.getColumns().add(c2);
+            table_results.getColumns().add(c3);
+            table_results.getColumns().add(c4);
+
+            ObservableList<Map<String, Object>> items =
+                    FXCollections.observableArrayList();
+
             for (Course course: registeredCourses) {
-                HBox hbox_course = new HBox();
-                hbox_course.getChildren().add(new Label(course.toString()));
                 Button btn_dropCourse = new Button("DROP COURSE");
                 btn_dropCourse.setOnAction(e -> {
                     student.dropCourse(course.getId());
                     btn_getRegisteredCourses.fire();
                 });
-                hbox_course.getChildren().add(btn_dropCourse);
-                vbox_results.getChildren().add(hbox_course);
+                Map<String, Object> item = new HashMap<>();
+                item.put("courseName", course.getName());
+                item.put("instructorName", course.getInstructor().getName());
+                item.put("available", " " + course.getAvailable());
+                item.put("button", btn_dropCourse);
+                items.add(item);
             }
+            table_results.getItems().addAll(items);
         });
-        btn_getAllCourses.setOnAction(event -> {
-            vbox_results.getChildren().clear();
-            Student student = new Student();
-            student.setId(Main.id);
-            List<Course> availableCourses = student.getAvailableCourses();
-            if (availableCourses.size() == 0) {
-                vbox_results.getChildren().add(new Label("NO COURSES"));
-                return;
-            }
-            for (Course course: availableCourses) {
-                HBox hbox_course = new HBox();
-                hbox_course.getChildren().add(new Label(course.toString()));
-                Button btn_registerCourse = new Button("REGISTER COURSE");
-                btn_registerCourse.setOnAction(e -> {
-                    student.registerCourse(course.getId());
-                    btn_getAllCourses.fire();
-                });
-                hbox_course.getChildren().add(btn_registerCourse);
-                vbox_results.getChildren().add(hbox_course);
-            }
-        });
+//        btn_getAllCourses.setOnAction(event -> {
+//            vbox_results.getChildren().clear();
+//            Student student = new Student();
+//            student.setId(Main.id);
+//            List<Course> availableCourses = student.getAvailableCourses();
+//            if (availableCourses.size() == 0) {
+//                vbox_results.getChildren().add(new Label("NO COURSES"));
+//                return;
+//            }
+//            for (Course course: availableCourses) {
+//                HBox hbox_course = new HBox();
+//                hbox_course.getChildren().add(new Label(course.toString()));
+//                Button btn_registerCourse = new Button("REGISTER COURSE");
+//                btn_registerCourse.setOnAction(e -> {
+//                    student.registerCourse(course.getId());
+//                    btn_getAllCourses.fire();
+//                });
+//                hbox_course.getChildren().add(btn_registerCourse);
+//                vbox_results.getChildren().add(hbox_course);
+//            }
+//        });
     }
 }
