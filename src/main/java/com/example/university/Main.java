@@ -10,11 +10,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import java.io.IOException;
-import java.util.logging.Level;
 
 public class Main extends Application {
-
-    {java.util.logging.Logger.getLogger("org.hibernate").setLevel(Level.OFF);}
 
     public static Stage stage;
     public static Session session;
