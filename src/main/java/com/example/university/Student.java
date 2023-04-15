@@ -7,7 +7,7 @@ import java.util.List;
 public class Student extends User {
 
     public List<Course> getRegisteredCourses() {
-        String hql = "SELECT course From Registration WHERE user = :student";
+        String hql = "SELECT course FROM Registration WHERE user = :student";
         Query query = Main.session.createQuery(hql);
         query.setParameter("student", this);
         return (List<Course>) query.getResultList();
