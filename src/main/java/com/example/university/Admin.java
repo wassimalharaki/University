@@ -1,6 +1,7 @@
 package com.example.university;
 
 import org.hibernate.query.Query;
+import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
 
@@ -65,6 +66,25 @@ public class Admin extends User {
         }
     }
 
+    public void updateUser(int id, String name, String email, String password, String role) {
+        User user = new User();
+        user.setId(id);
+        updateUser(user, name, email, password, role);
+    }
+    public void updateUser(User user, String name, String email, String password, String role) {
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(BCrypt.hashpw(password, BCrypt.gensalt()));
+        user.setRole(role);
+        try {
+            Main.session.update(user);
+            Main.transaction.commit();
+        } catch (Exception e) {
+            Main.transaction.rollback();
+            System.out.println(e.getMessage());
+        }
+    }
+
     public void addCourse(String name, User instructor, boolean available) {
         Course course = new Course();
         course.setName(name);
@@ -87,6 +107,26 @@ public class Admin extends User {
     public void removeCourse(Course course) {
         try {
             Main.session.delete(course);
+            Main.transaction.commit();
+        } catch (Exception e) {
+            Main.transaction.rollback();
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public void updateCourse(int id, String name, int instructorId, boolean available) {
+        Course course = new Course();
+        course.setId(id);
+        Instructor instructor = new Instructor();
+        instructor.setId(instructorId);
+        updateCourse(course, name, instructor, available);
+    }
+    public void updateCourse(Course course, String name, Instructor instructor, boolean available) {
+        course.setName(name);
+        course.setInstructor(instructor);
+        course.setAvailable(available);
+        try {
+            Main.session.update(course);
             Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
