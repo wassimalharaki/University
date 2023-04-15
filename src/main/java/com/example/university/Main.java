@@ -15,6 +15,7 @@ public class Main extends Application {
     public static Stage stage;
 
     public static int id = -1;
+
     public static Session session;
     public static Transaction transaction = null;
 

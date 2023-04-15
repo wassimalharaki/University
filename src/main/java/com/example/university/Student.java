@@ -13,7 +13,6 @@ public class Student extends User {
         query.setParameter("student", this);
         return (List<Course>) query.getResultList();
     }
-
     public List<Course> getAvailableCourses() {
         List<Course> registeredCourses = getRegisteredCourses();
         List<Course> availableCourses = Course.getAvailableCourses();

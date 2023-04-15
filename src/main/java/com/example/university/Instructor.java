@@ -1,6 +1,5 @@
 package com.example.university;
 
-import javafx.scene.control.Label;
 import org.hibernate.query.Query;
 
 import java.util.ArrayList;

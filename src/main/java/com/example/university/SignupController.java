@@ -14,8 +14,10 @@ public class SignupController implements Initializable {
 
     @FXML
     private Button btn_signup, btn_login;
+
     @FXML
     private TextField tf_name, tf_email;
+
     @FXML
     private PasswordField pf_password, pf_confPassword;
 
@@ -43,4 +45,3 @@ public class SignupController implements Initializable {
 
     }
 }
-
