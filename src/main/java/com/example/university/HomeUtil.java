@@ -4,6 +4,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import org.hibernate.query.Query;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import org.mindrot.jbcrypt.BCrypt;
 import java.util.List;
 
@@ -11,8 +12,8 @@ public class HomeUtil {
 
     public static void changeScene(String fxmlFile, String title, int width, int height) {
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource(fxmlFile));
+        Main.stage.setTitle(title);
         try {
-            Main.stage.setTitle(title);
             Main.stage.setScene(new Scene(fxmlLoader.load(), width, height));
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -78,14 +79,16 @@ public class HomeUtil {
         user.setPassword(hashedPassword);
         user.setRole("s");
 
-        hql = "From User WHERE email = :email";
-        query = Main.session.createQuery(hql);
-        query.setParameter("email", email);
-        int id = ((User) query.getResultList()).getId();
-
         try {
             Main.session.save(user);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
+
+            hql = "From User WHERE email = :email";
+            query = Main.session.createQuery(hql);
+            query.setParameter("email", email);
+            int id = ((User) query.getResultList().get(0)).getId();
+
             Main.id = id;
             changeScene("student.fxml", "Welcome Student", 1000, 800);
         } catch (Exception e) {
