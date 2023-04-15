@@ -1,6 +1,7 @@
 package com.example.university;
 
 import org.hibernate.query.Query;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.List;
 
@@ -11,6 +12,14 @@ public class Student extends User {
         Query query = Main.session.createQuery(hql);
         query.setParameter("student", this);
         return (List<Course>) query.getResultList();
+    }
+
+    public List<Course> getAvailableCourses() {
+        List<Course> registeredCourses = getRegisteredCourses();
+        List<Course> availableCourses = Course.getAvailableCourses();
+        for (Course course: registeredCourses)
+            availableCourses.remove(course);
+        return availableCourses;
     }
 
     public void registerCourse(int id) {
@@ -24,7 +33,8 @@ public class Student extends User {
         registration.setCourse(course);
         try {
             Main.session.save(registration);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
@@ -44,8 +54,10 @@ public class Student extends User {
         List<Registration> registrationList = query.getResultList();
         Registration registration = registrationList.get(0);
         try {
+            Main.transaction.begin();
             Main.session.delete(registration);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());

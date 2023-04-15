@@ -4,7 +4,6 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -14,12 +13,14 @@ import java.io.IOException;
 public class Main extends Application {
 
     public static Stage stage;
+
+    public static int id = -1;
     public static Session session;
     public static Transaction transaction = null;
 
     public Main() {
         session = HibernateUtil.getSessionFactory().openSession();
-        transaction = session.beginTransaction();
+        transaction = session.getTransaction();
     }
 
     @Override

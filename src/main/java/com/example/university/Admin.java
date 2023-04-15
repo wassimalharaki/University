@@ -1,6 +1,7 @@
 package com.example.university;
 
 import org.hibernate.query.Query;
+import org.hibernate.resource.transaction.spi.TransactionStatus;
 import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.List;
@@ -44,7 +45,8 @@ public class Admin extends User {
         user.setRole(role);
         try {
             Main.session.save(user);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
@@ -58,8 +60,10 @@ public class Admin extends User {
     }
     public void removeUser(User user) {
         try {
+            Main.transaction.begin();
             Main.session.delete(user);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
@@ -78,7 +82,8 @@ public class Admin extends User {
         user.setRole(role);
         try {
             Main.session.update(user);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
@@ -92,7 +97,8 @@ public class Admin extends User {
         course.setAvailable(available);
         try {
             Main.session.save(course);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
@@ -106,8 +112,10 @@ public class Admin extends User {
     }
     public void removeCourse(Course course) {
         try {
+            Main.transaction.begin();
             Main.session.delete(course);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
@@ -127,7 +135,8 @@ public class Admin extends User {
         course.setAvailable(available);
         try {
             Main.session.update(course);
-            Main.transaction.commit();
+            if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                Main.transaction.commit();
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());

@@ -21,10 +21,10 @@ public class HomeUtil {
 
     public static void login(String email, String pass) {
 
-        String hql = "FROM User WHERE email = :eml";
+        String hql = "FROM User WHERE email = :email";
         Query query = Main.session.createQuery(hql);
-        query.setParameter("eml", email);
-        List<User> results = query.getResultList();
+        query.setParameter("email", email);
+        List<User> results = (List<User>) query.getResultList();
 
         if (results.size() != 1) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -42,6 +42,7 @@ public class HomeUtil {
             return;
         }
 
+        Main.id = current.getId();
         if (current.getRole().equals("s"))
             changeScene("student.fxml", "Welcome Student", 1000, 800);
         else if (current.getRole().equals("a"))
@@ -77,9 +78,15 @@ public class HomeUtil {
         user.setPassword(hashedPassword);
         user.setRole("s");
 
+        hql = "From User WHERE email = :email";
+        query = Main.session.createQuery(hql);
+        query.setParameter("email", email);
+        int id = ((User) query.getResultList()).getId();
+
         try {
             Main.session.save(user);
             Main.transaction.commit();
+            Main.id = id;
             changeScene("student.fxml", "Welcome Student", 1000, 800);
         } catch (Exception e) {
             Main.transaction.rollback();
