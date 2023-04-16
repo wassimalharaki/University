@@ -20,7 +20,7 @@ public class Student extends  User{
             availableCourses.remove(course);
         return availableCourses;
     }
-    public void registerCourse(int id) {
+    public void registerCourse(int id){
         Course course = new Course();
         course.setId(id);
         registerCourse(course);
