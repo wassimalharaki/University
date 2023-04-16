@@ -5,22 +5,21 @@ import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.List;
 
-public class Student extends User {
+public class Student extends  User{
 
-    public List<Course> getRegisteredCourses() {
+    public List<Course> getRegisteredCourses(){
         String hql = "SELECT course FROM Registration WHERE user = :student";
         Query query = Main.session.createQuery(hql);
         query.setParameter("student", this);
         return (List<Course>) query.getResultList();
     }
-    public List<Course> getAvailableCourses() {
+    public List<Course> getAvailableCourses(){
         List<Course> registeredCourses = getRegisteredCourses();
         List<Course> availableCourses = Course.getAvailableCourses();
-        for (Course course: registeredCourses)
+        for(Course course: registeredCourses)
             availableCourses.remove(course);
         return availableCourses;
     }
-
     public void registerCourse(int id) {
         Course course = new Course();
         course.setId(id);
