@@ -1,68 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.LoginController">
+<AnchorPane maxHeight="650.0" prefHeight="639.0" prefWidth="850.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.LoginController">
    <children>
-      <BorderPane prefHeight="800.0" prefWidth="1000.0">
-         <left>
-            <Pane prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #0c559c;" BorderPane.alignment="CENTER">
+      <BorderPane prefHeight="643.0" prefWidth="850.0">
+         <center>
+            <Pane prefHeight="650.0" prefWidth="850.0">
                <children>
-                  <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="650.0" fitWidth="883.0" layoutX="-111.0" layoutY="-3.0" pickOnBounds="true" preserveRatio="true" style="-fx-opacity: 0.9;">
                      <image>
-                        <Image url="@/images/bg.jpg" />
+                        <Image url="@../../../images/uobseg.jpg" />
                      </image>
                   </ImageView>
-                  <Pane prefHeight="800.0" prefWidth="400.0" style="-fx-background-color: #070675; -fx-opacity: 0.9;">
+                  <Pane layoutY="-3.0" maxHeight="650.0" prefHeight="650.0" prefWidth="404.0" style="-fx-background-color: #070675; -fx-opacity: 0.9;">
                      <children>
-                        <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="130.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@/images/logo.png" />
-                           </image>
-                        </ImageView>
-                        <Text fill="WHITE" layoutX="90.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="University of Balamand">
+                        <Text fill="WHITE" layoutX="154.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In">
                            <font>
-                              <Font name="System Bold" size="20.0" />
+                              <Font name="System Bold" size="29.0" />
                            </font>
                         </Text>
-                        <Text fill="WHITE" layoutX="131.0" layoutY="783.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 - All Rights Reserved.">
+                        <TextField fx:id="tf_email" layoutX="60.0" layoutY="306.0" prefHeight="35.0" prefWidth="284.0" promptText="Email" style="-fx-background-color: #070675; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: white;">
                            <font>
-                              <Font name="System Bold" size="10.0" />
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </TextField>
+                        <Button fx:id="btn_login" layoutX="60.0" layoutY="449.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="284.0" style="-fx-background-color: #00aff0; -fx-cursor: HAND;" text="Sign In" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </Button>
+                        <Text fill="WHITE" layoutX="141.0" layoutY="512.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot Your Password?" />
+                        <PasswordField fx:id="pf_password" layoutX="60.0" layoutY="377.0" prefHeight="35.0" prefWidth="284.0" promptText="Password" style="-fx-background-color: #070675; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: white;">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                        </PasswordField>
+                        <ImageView fitHeight="87.0" fitWidth="72.0" layoutX="29.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../../images/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#00aff0" layoutX="114.0" layoutY="108.0" strokeType="OUTSIDE" strokeWidth="0.0" text="University of Balamand" wrappingWidth="271.296875">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
                            </font>
                         </Text>
                      </children>
                   </Pane>
-               </children>
-            </Pane>
-         </left>
-         <center>
-            <Pane prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #dddddd;" BorderPane.alignment="CENTER">
-               <children>
-                  <Text layoutX="258.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Login">
+                  <Text fill="WHITE" layoutX="502.0" layoutY="612.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 - All Rights Reserved.">
                      <font>
-                        <Font name="Times New Roman" size="36.0" />
+                        <Font name="System Bold" size="10.0" />
                      </font>
                   </Text>
-                  <TextField fx:id="tf_email" focusTraversable="false" layoutX="157.0" layoutY="348.0" prefHeight="35.0" prefWidth="284.0" promptText="Email" />
-                  <PasswordField fx:id="pf_password" focusTraversable="false" layoutX="157.0" layoutY="401.0" prefHeight="35.0" prefWidth="284.0" promptText="Password" />
-                  <Button fx:id="btn_login" layoutX="157.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #070675;" text="Login" textFill="WHITE">
+                  <Text fill="#070675" layoutX="427.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A FORWARD-THINKING INSTITUTION FOR HIGHER EDUCATION" wrappingWidth="288.4698486328125">
                      <font>
-                        <Font name="Times New Roman" size="18.0" />
+                        <Font name="System Bold" size="24.0" />
                      </font>
-                  </Button>
-                  <Button fx:id="btn_register" layoutX="304.0" layoutY="517.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="140.0" style="-fx-border-color: black;" text="Register Now">
-                     <font>
-                        <Font name="Times New Roman" size="18.0" />
-                     </font>
-                  </Button>
-                  <CheckBox layoutX="157.0" layoutY="453.0" mnemonicParsing="false" text="Remember me" textFill="#535353" />
-                  <Text fill="#535353" layoutX="355.0" layoutY="466.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot password" />
+                  </Text>
                </children>
             </Pane>
          </center>
+         <left>
+            <Pane prefHeight="642.0" prefWidth="110.0" style="-fx-background-color: white; -fx-opacity: 0.9;" BorderPane.alignment="CENTER">
+               <children>
+                  <Button layoutX="26.0" layoutY="115.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-cursor: HAND; -fx-border-style: solid; -fx-border-width: 0 0 1 0;" text="Sign In">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="btn_register" layoutX="23.0" layoutY="198.0" mnemonicParsing="false" style="-fx-background-color: white; -fx-cursor: HAND; -fx-border-style: solid; -fx-border-width: 0 0 1 0;" text="Sign Up">
+                     <font>
+                        <Font size="13.0" />
+                     </font>
+                  </Button>
+               </children>
+            </Pane>
+         </left>
       </BorderPane>
    </children>
 </AnchorPane>

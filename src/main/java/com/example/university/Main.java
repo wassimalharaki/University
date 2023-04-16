@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -28,7 +29,7 @@ public class Main extends Application {
     public void start(Stage stage) throws IOException {
         Main.stage = stage;
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("login.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1000, 800);
+        Scene scene = new Scene(fxmlLoader.load(), 850, 640);
         Image icon = new Image(getClass().getResourceAsStream("/images/logo.png"));
         stage.getIcons().add(icon);
         stage.setTitle("Login");
@@ -36,6 +37,7 @@ public class Main extends Application {
         stage.setResizable(false);
         stage.show();
         stage.centerOnScreen();
+
     }
 
     public static void main(String[] args) {
