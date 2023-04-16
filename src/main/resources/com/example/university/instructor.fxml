@@ -5,7 +5,7 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.InstructorController">
    <children>
-      <Button fx:id="btn_viewCourses" layoutX="403.0" layoutY="54.0" mnemonicParsing="false" prefHeight="98.0" prefWidth="195.0" text="View Courses" />
-      <TableView fx:id="table_results" layoutX="75.0" layoutY="262.0" prefHeight="487.0" prefWidth="852.0" />
+      <Button fx:id="btn_viewCourses" layoutX="403.0" layoutY="54.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="View Courses" style="-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;" />
+      <TableView fx:id="table_results" layoutX="300.0" layoutY="262.0" prefHeight="487.0" prefWidth="450.0" />
    </children>
 </AnchorPane>
