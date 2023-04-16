@@ -39,7 +39,7 @@ public class Student extends  User{
         }
    }
 
-    public void dropCourse(int id) {
+    public  void dropCourse(int id){
         Course course = new Course();
         course.setId(id);
         dropCourse(course);
