@@ -39,6 +39,7 @@ public class StudentController implements Initializable {
 
             table_results.getColumns().clear();
             table_results.getItems().clear();
+            table_results.setStyle("-fx-background-color: #1E90FF; ");
 
             Student student = new Student();
             student.setId(Main.id);
@@ -55,6 +56,12 @@ public class StudentController implements Initializable {
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
             table_results.getColumns().add(c3);
+
+            c1.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
+            c2.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
+            c2.setPrefWidth(150);
+            c3.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
+            c3.setPrefWidth(120);
 
             ObservableList<Map<String, Object>> items =
                     FXCollections.observableArrayList();
@@ -99,6 +106,10 @@ public class StudentController implements Initializable {
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
             table_results.getColumns().add(c3);
+
+            c1.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
+            c2.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
+            c3.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
 
             ObservableList<Map<String, Object>> items =
                     FXCollections.observableArrayList();
