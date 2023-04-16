@@ -40,6 +40,7 @@ public class InstructorController implements Initializable {
             c1.setCellValueFactory(new MapValueFactory<>("courseName"));
             TableColumn<Map, String> c2 = new TableColumn<>("Available");
             c2.setCellValueFactory(new MapValueFactory<>("available"));
+            c2.setPrefWidth(100);
             TableColumn<Map, Button> c3 = new TableColumn<>("Action");
             c3.setCellValueFactory(new MapValueFactory<>("button"));
 
