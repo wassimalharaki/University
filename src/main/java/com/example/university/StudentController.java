@@ -98,10 +98,13 @@ public class StudentController implements Initializable {
 
             TableColumn<Map, String> c1 = new TableColumn<>("Course Name");
             c1.setCellValueFactory(new MapValueFactory<>("courseName"));
+            c1.setPrefWidth(170);
             TableColumn<Map, String> c2 = new TableColumn<>("Instructor Name");
             c2.setCellValueFactory(new MapValueFactory<>("instructorName"));
+            c2.setPrefWidth(160);
             TableColumn<Map, Button> c3 = new TableColumn<>("Action");
             c3.setCellValueFactory(new MapValueFactory<>("button"));
+            c3.setPrefWidth(160);
 
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
