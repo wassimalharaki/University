@@ -53,7 +53,6 @@ public class InstructorController implements Initializable {
 
             for (Course course: instructedCourses) {
                 Button btn_viewStudents = new Button("VIEW STUDENTS");
-
                 btn_viewStudents.setOnAction(e -> {
                     viewStudents(instructor, course);
                 });

@@ -39,7 +39,6 @@ public class StudentController implements Initializable {
 
             table_results.getColumns().clear();
             table_results.getItems().clear();
-            table_results.setStyle("-fx-background-color: #1E90FF; ");
 
             Student student = new Student();
             student.setId(Main.id);
@@ -123,8 +122,8 @@ public class StudentController implements Initializable {
                     student.registerCourse(course.getId());
                     btn_getAllCourses.fire();
                 });
-
                 btn_registerCourse.setStyle("-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;");
+
                 Map<String, Object> item = new HashMap<>();
 
                 item.put("courseName", course.getName());
@@ -135,7 +134,6 @@ public class StudentController implements Initializable {
             }
 
             table_results.getItems().addAll(items);
-
         });
     }
 }

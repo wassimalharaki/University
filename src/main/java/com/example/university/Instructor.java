@@ -37,18 +37,16 @@ public class Instructor extends User {
         String hql = "From Registration WHERE course = :course";
         Query query = Main.session.createQuery(hql);
         query.setParameter("course", course);
-        for (Registration registration: (List<Registration>) query.getResultList()) {
+        for (Registration registration: (List<Registration>) query.getResultList())
             studentsRegisteredInCourse.add(registration.getUser());
-        }
         return studentsRegisteredInCourse;
     }
 
     private boolean checkCourse(Course course) {
         List<Course> courses = getInstructedCourses();
-        for (Course crs: courses) {
+        for (Course crs: courses)
             if (course.getId() == crs.getId())
                 return true;
-        }
         return false;
     }
 }
