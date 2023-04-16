@@ -65,6 +65,7 @@ public class StudentController implements Initializable {
                     student.dropCourse(course.getId());
                     btn_getRegisteredCourses.fire();
                 });
+                btn_dropCourse.setStyle("-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;");
 
                 Map<String, Object> item = new HashMap<>();
 
@@ -109,6 +110,7 @@ public class StudentController implements Initializable {
                     btn_getAllCourses.fire();
                 });
 
+                btn_registerCourse.setStyle("-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;");
                 Map<String, Object> item = new HashMap<>();
 
                 item.put("courseName", course.getName());
