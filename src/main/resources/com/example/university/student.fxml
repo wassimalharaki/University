@@ -8,8 +8,8 @@
    <children>
       <Button fx:id="btn_getRegisteredCourses" layoutX="96.0" layoutY="47.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Get Registered Courses" style="-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;"/>
       <Button fx:id="btn_getAllCourses" layoutX="600.0" layoutY="47.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="Get All Courses"  style="-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;"/>
-      <TableView fx:id="table_results" layoutX="96.0" layoutY="246.0" prefHeight="469.0" prefWidth="700.0" />
-      <Label fx:id="lbl_noResults" alignment="CENTER" contentDisplay="CENTER" layoutX="366.0" layoutY="194.0" prefHeight="37.0" prefWidth="248.0" text="NO COURSES">
+      <TableView fx:id="table_results" layoutX="200.0" layoutY="246.0" prefHeight="469.0" prefWidth="485.0"/>
+      <Label fx:id="lbl_noResults" alignment="CENTER" contentDisplay="CENTER" layoutX="366.0" layoutY="194.0" prefHeight="37.0" prefWidth="248.0" text="">
          <font>
             <Font size="27.0" />
          </font></Label>
