@@ -44,7 +44,7 @@ public class Student extends  User{
         course.setId(id);
         dropCourse(course);
     }
-    public void dropCourse(Course course) {
+  public  void dropCourse(Course course){
         String hql = "FROM Registration WHERE user = :student AND course = :course";
         Query query = Main.session.createQuery(hql);
         query.setParameter("student", this);
@@ -59,6 +59,6 @@ public class Student extends  User{
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
-        }
-    }
+      }
+  }
 }
