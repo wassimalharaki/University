@@ -135,6 +135,7 @@ public class StudentController implements Initializable {
             }
 
             table_results.getItems().addAll(items);
+
         });
     }
 }
