@@ -25,19 +25,19 @@ public class Student extends  User{
         course.setId(id);
         registerCourse(course);
     }
-    public void registerCourse(Course course) {
+   public void registerCourse(Course course){
         Registration registration = new Registration();
         registration.setUser(this);
         registration.setCourse(course);
-        try {
+        try{
             Main.session.save(registration);
             if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
                 Main.transaction.commit();
-        } catch (Exception e) {
+        }catch (Exception e){
             Main.transaction.rollback();
             System.out.println(e.getMessage());
         }
-    }
+   }
 
     public void dropCourse(int id) {
         Course course = new Course();
