@@ -49,11 +49,11 @@ public class HomeUtil {
 
         Main.id = current.getId();
         if (current.getRole().equals("s"))
-            changeScene("student.fxml", "Welcome Student", 1000, 750);
+            changeScene("student.fxml", "Welcome Student", 850, 640);
         else if (current.getRole().equals("a"))
-            changeScene("admin.fxml", "Welcome Admin", 1000, 750);
+            changeScene("admin.fxml", "Welcome Admin", 850, 640);
         else if (current.getRole().equals("i"))
-            changeScene("instructor.fxml", "Welcome Instructor", 1000, 750);
+            changeScene("instructor.fxml", "Welcome Instructor", 850, 640);
     }
 
     public static void signup(String name, String email, String pass, String confPass) {
@@ -99,6 +99,4 @@ public class HomeUtil {
             System.out.println(e.getMessage());
         }
     }
-
-
 }

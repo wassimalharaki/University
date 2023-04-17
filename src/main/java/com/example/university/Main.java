@@ -39,8 +39,6 @@ public class Main extends Application {
         stage.show();
         stage.setX((Screen.getPrimary().getVisualBounds().getWidth() - stage.getWidth()) / 2);
         stage.setY((Screen.getPrimary().getVisualBounds().getHeight() - stage.getHeight()) / 2);
-
-
     }
 
     public static void main(String[] args) {
