@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.MapValueFactory;
 
@@ -45,19 +46,21 @@ public class InstructorController implements Initializable {
             c1.setCellValueFactory(new MapValueFactory<>("courseName"));
             TableColumn<Map, String> c2 = new TableColumn<>("Available");
             c2.setCellValueFactory(new MapValueFactory<>("available"));
-            c2.setPrefWidth(100);
             TableColumn<Map, Button> c3 = new TableColumn<>("Action");
             c3.setCellValueFactory(new MapValueFactory<>("button"));
 
+            table_results.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
             table_results.getColumns().add(c3);
+            table_results.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
             ObservableList<Map<String, Object>> items =
                     FXCollections.observableArrayList();
 
             for (Course course: instructedCourses) {
                 Button btn_viewStudents = new Button("VIEW STUDENTS");
+                btn_viewStudents.setCursor(Cursor.HAND);
                 btn_viewStudents.setOnAction(e -> {
                     viewStudents(instructor, course);
                 });
@@ -87,8 +90,10 @@ public class InstructorController implements Initializable {
         TableColumn<Map, String> c2 = new TableColumn<>("Email");
         c2.setCellValueFactory(new MapValueFactory<>("email"));
 
+        table_results.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
         table_results.getColumns().add(c1);
         table_results.getColumns().add(c2);
+        table_results.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
         ObservableList<Map<String, Object>> items =
                 FXCollections.observableArrayList();

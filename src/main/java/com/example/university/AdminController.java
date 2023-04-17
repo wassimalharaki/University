@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Cursor;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.MapValueFactory;
 import javafx.scene.layout.HBox;
@@ -88,10 +89,12 @@ public class AdminController implements Initializable {
             TableColumn<Map, HBox> c4 = new TableColumn<>("Action");
             c4.setCellValueFactory(new MapValueFactory<>("container"));
 
+            table_results.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
             table_results.getColumns().add(c3);
             table_results.getColumns().add(c4);
+            table_results.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
             ObservableList<Map<String, Object>> items =
                     FXCollections.observableArrayList();
@@ -100,11 +103,13 @@ public class AdminController implements Initializable {
                 HBox box_action = new HBox();
 
                 Button btn_update = new Button("UPDATE");
+                btn_update.setCursor(Cursor.HAND);
                 btn_update.setOnAction(e -> {
                     userAction(admin, user);
                 });
 
                 Button btn_remove = new Button("REMOVE");
+                btn_remove.setCursor(Cursor.HAND);
                 btn_remove.setOnAction(e -> {
                     if (user.getId() == Main.id) {
                         Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -154,10 +159,12 @@ public class AdminController implements Initializable {
             TableColumn<Map, HBox> c4 = new TableColumn<>("Action");
             c4.setCellValueFactory(new MapValueFactory<>("container"));
 
+            table_results.setColumnResizePolicy(TableView.UNCONSTRAINED_RESIZE_POLICY);
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
             table_results.getColumns().add(c3);
             table_results.getColumns().add(c4);
+            table_results.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
 
             ObservableList<Map<String, Object>> items =
                     FXCollections.observableArrayList();
@@ -166,11 +173,13 @@ public class AdminController implements Initializable {
                 HBox box_action = new HBox();
 
                 Button btn_update = new Button("UPDATE");
+                btn_update.setCursor(Cursor.HAND);
                 btn_update.setOnAction(e -> {
                     courseAction(admin, course);
                 });
 
                 Button btn_remove = new Button("REMOVE");
+                btn_remove.setCursor(Cursor.HAND);
                 btn_remove.setOnAction(e -> {
                     admin.removeCourse(course);
                     btn_getCourses.fire();
