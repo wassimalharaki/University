@@ -28,7 +28,7 @@ public class InstructorController implements Initializable {
 
         btn_logout.setOnAction(event -> {
             Main.id = -1;
-            HomeUtil.changeScene("Login.fxml", "Login", 850, 640);
+            HomeUtil.changeScene("login.fxml", "Sign In", 850, 640);
         });
 
         btn_viewCourses.setOnAction(event -> {

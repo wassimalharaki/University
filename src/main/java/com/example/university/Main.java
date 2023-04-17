@@ -33,12 +33,11 @@ public class Main extends Application {
         Scene scene = new Scene(fxmlLoader.load(), 850, 640);
         Image icon = new Image(getClass().getResourceAsStream("/images/logo.png"));
         stage.getIcons().add(icon);
-        stage.setTitle("Login");
+        stage.setTitle("Sign In");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();
-        stage.setX((Screen.getPrimary().getVisualBounds().getWidth() - stage.getWidth()) / 2);
-        stage.setY((Screen.getPrimary().getVisualBounds().getHeight() - stage.getHeight()) / 2);
+        stage.centerOnScreen();
     }
 
     public static void main(String[] args) {

@@ -16,8 +16,7 @@ public class HomeUtil {
         Main.stage.setTitle(title);
         try {
             Main.stage.setScene(new Scene(fxmlLoader.load(), width, height));
-            Main.stage.setX((Screen.getPrimary().getVisualBounds().getWidth() - Main.stage.getWidth()) / 2);
-            Main.stage.setY((Screen.getPrimary().getVisualBounds().getHeight() - Main.stage.getHeight()) / 2);
+            Main.stage.centerOnScreen();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -49,11 +48,11 @@ public class HomeUtil {
 
         Main.id = current.getId();
         if (current.getRole().equals("s"))
-            changeScene("student.fxml", "Welcome Student", 850, 640);
+            changeScene("student.fxml", "Welcome Student", 1000, 750);
         else if (current.getRole().equals("a"))
-            changeScene("admin.fxml", "Welcome Admin", 850, 640);
+            changeScene("admin.fxml", "Welcome Admin", 1000, 750);
         else if (current.getRole().equals("i"))
-            changeScene("instructor.fxml", "Welcome Instructor", 850, 640);
+            changeScene("instructor.fxml", "Welcome Instructor", 1000, 750);
     }
 
     public static void signup(String name, String email, String pass, String confPass) {

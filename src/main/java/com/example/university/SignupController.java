@@ -40,7 +40,7 @@ public class SignupController implements Initializable {
         });
 
         btn_login.setOnAction(event -> {
-            HomeUtil.changeScene("login.fxml","Login",850,640);
+            HomeUtil.changeScene("login.fxml","Sign In",850,640);
         });
 
     }
