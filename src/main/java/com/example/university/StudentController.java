@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
 public class StudentController implements Initializable {
 
     @FXML
-    Button btn_getRegisteredCourses;
+    Button btn_getRegisteredCourses, btn_logout;
 
     @FXML
     Button btn_getAllCourses;
@@ -35,6 +35,11 @@ public class StudentController implements Initializable {
 
         table_results.setPlaceholder(new Label("No Results"));
 
+        btn_logout.setOnAction(event -> {
+            Main.id = -1;
+            HomeUtil.changeScene("Login.fxml", "Login", 850, 640);
+        });
+
         btn_getRegisteredCourses.setOnAction(event -> {
 
             table_results.getColumns().clear();
@@ -46,21 +51,33 @@ public class StudentController implements Initializable {
             List<Course> registeredCourses = student.getRegisteredCourses();
 
             TableColumn<Map, String> c1 = new TableColumn<>("Course Name");
+            c1.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;");
             c1.setCellValueFactory(new MapValueFactory<>("courseName"));
+
             TableColumn<Map, String> c2 = new TableColumn<>("Instructor Name");
+            c2.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;");
             c2.setCellValueFactory(new MapValueFactory<>("instructorName"));
+
             TableColumn<Map, Button> c3 = new TableColumn<>("Action");
+            c3.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;");
             c3.setCellValueFactory(new MapValueFactory<>("button"));
+
 
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
             table_results.getColumns().add(c3);
+            table_results.setStyle("-fx-border-color: transparent;");
 
-            c1.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
-            c2.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
-            c2.setPrefWidth(150);
-            c3.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
-            c3.setPrefWidth(120);
+
+            c1.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;  -fx-border-color: transparent;\n" +
+                    "    -fx-border-width: 0px;");
+            c1.setPrefWidth(118);
+            c2.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;  -fx-border-color: transparent;\n" +
+                    "    -fx-border-width: 0px;");
+            c2.setPrefWidth(118);
+            c3.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;  -fx-border-color: transparent;\n" +
+                    "    -fx-border-width: 0px;");
+            c3.setPrefWidth(118);
 
             ObservableList<Map<String, Object>> items =
                     FXCollections.observableArrayList();
@@ -71,7 +88,7 @@ public class StudentController implements Initializable {
                     student.dropCourse(course.getId());
                     btn_getRegisteredCourses.fire();
                 });
-                btn_dropCourse.setStyle("-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;");
+                btn_dropCourse.setStyle("-fx-background-color: orange; -fx-text-fill: #ffffff;");
 
                 Map<String, Object> item = new HashMap<>();
 
@@ -97,21 +114,24 @@ public class StudentController implements Initializable {
 
             TableColumn<Map, String> c1 = new TableColumn<>("Course Name");
             c1.setCellValueFactory(new MapValueFactory<>("courseName"));
-            c1.setPrefWidth(170);
+            c1.setPrefWidth(118);
             TableColumn<Map, String> c2 = new TableColumn<>("Instructor Name");
             c2.setCellValueFactory(new MapValueFactory<>("instructorName"));
-            c2.setPrefWidth(160);
+            c2.setPrefWidth(116);
             TableColumn<Map, Button> c3 = new TableColumn<>("Action");
             c3.setCellValueFactory(new MapValueFactory<>("button"));
-            c3.setPrefWidth(160);
+            c3.setPrefWidth(120);
 
             table_results.getColumns().add(c1);
             table_results.getColumns().add(c2);
             table_results.getColumns().add(c3);
 
-            c1.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
-            c2.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
-            c3.setStyle("-fx-background-color: #1E90FF; -fx-text-fill: #ffffff;");
+            c1.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;  -fx-border-color: transparent;\n" +
+                    "    -fx-border-width: 0px;");
+            c2.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;  -fx-border-color: transparent;\n" +
+                    "    -fx-border-width: 0px;");
+            c3.setStyle("-fx-background-color:  #070675; -fx-text-fill: #ffffff;  -fx-border-color: transparent;\n" +
+                    "    -fx-border-width: 0px;");
 
             ObservableList<Map<String, Object>> items =
                     FXCollections.observableArrayList();
@@ -122,7 +142,7 @@ public class StudentController implements Initializable {
                     student.registerCourse(course.getId());
                     btn_getAllCourses.fire();
                 });
-                btn_registerCourse.setStyle("-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;");
+                btn_registerCourse.setStyle("-fx-background-color: orange; -fx-text-fill: white;");
 
                 Map<String, Object> item = new HashMap<>();
 

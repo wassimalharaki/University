@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.collections.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.AdminController">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.AdminController">
    <children>
-      <Button fx:id="btn_getUsers" layoutX="29.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Get Users" />
-      <ComboBox fx:id="combo_users" layoutX="29.0" layoutY="101.0" prefHeight="25.0" prefWidth="97.0" value="All">
+      <Pane layoutX="-1.0" prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: #070675;">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="160.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/UOB_EN_White.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_logout" layoutX="899.0" layoutY="27.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: orange;" text="Logout">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Button fx:id="btn_getUsers" layoutX="279.0" layoutY="145.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #00c0ef;" text="Get Users" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/add-user.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <ComboBox fx:id="combo_users" layoutX="837.0" layoutY="319.0" prefHeight="25.0" prefWidth="97.0" value="All">
           <items>
               <FXCollections fx:factory="observableArrayList">
                   <String fx:value="All" />
@@ -18,34 +52,44 @@
               </FXCollections>
           </items>
       </ComboBox>
-      <Button fx:id="btn_getCourses" layoutX="179.0" layoutY="56.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="124.0" text="Get Courses" />
-      <TableView fx:id="table_results" layoutX="50.0" layoutY="258.0" prefHeight="518.0" prefWidth="900.0">
+      <Button fx:id="btn_getCourses" alignment="CENTER_RIGHT" layoutX="626.0" layoutY="145.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: orange;" text="Get Courses" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="65.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/book.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <TableView fx:id="table_results" layoutX="279.0" layoutY="319.0" prefHeight="400.0" prefWidth="550.0" style="-fx-border-color: transparent; -fx-border-style: solid;">
           <placeholder>
               <Label text="No Results" />
           </placeholder>
       </TableView>
-      <Pane fx:id="pane_userAction" layoutX="50.0" layoutY="258.0" prefHeight="518.0" prefWidth="900.0" style="-fx-border-color: black; -fx-border-width: 5;" visible="false">
+      <Pane fx:id="pane_userAction" layoutX="280.0" layoutY="317.0" prefHeight="400.0" prefWidth="550.0" style="-fx-border-color: black; -fx-border-width: 5;" visible="false">
          <children>
-            <Button fx:id="btn_userConfirm" layoutX="405.0" layoutY="446.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="90.0" text="CONFIRM" />
+            <Button fx:id="btn_userConfirm" layoutX="204.0" layoutY="334.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="150.0" text="CONFIRM" />
             <TextField fx:id="tf_name" layoutX="108.0" layoutY="54.0" />
-            <TextField fx:id="tf_email" layoutX="545.0" layoutY="54.0" />
+            <TextField fx:id="tf_email" layoutX="435.0" layoutY="54.0" prefHeight="25.0" prefWidth="90.0" />
             <TextField fx:id="tf_role" layoutX="108.0" layoutY="185.0" />
-            <Label alignment="CENTER" layoutX="472.0" layoutY="54.0" prefHeight="25.0" prefWidth="46.0" text="Email" />
+            <Label alignment="CENTER" layoutX="363.0" layoutY="54.0" prefHeight="25.0" prefWidth="72.0" text="Email" />
             <Label alignment="CENTER" layoutX="45.0" layoutY="185.0" prefHeight="25.0" prefWidth="46.0" text="Role" />
             <Label alignment="CENTER" layoutX="26.0" layoutY="121.0" prefHeight="25.0" prefWidth="65.0" text="Password" />
             <Label alignment="CENTER" layoutX="45.0" layoutY="54.0" prefHeight="25.0" prefWidth="46.0" text="Name" />
-            <Label alignment="CENTER" layoutX="411.0" layoutY="121.0" prefHeight="25.0" prefWidth="107.0" text="Confirm Password" />
+            <Label alignment="CENTER" layoutX="279.0" layoutY="121.0" prefHeight="25.0" prefWidth="124.0" text="Confirm Password" />
             <PasswordField fx:id="pf_password" layoutX="108.0" layoutY="121.0" />
-            <PasswordField fx:id="pf_confirmPassword" layoutX="545.0" layoutY="121.0" />
+            <PasswordField fx:id="pf_confirmPassword" layoutX="422.0" layoutY="121.0" prefHeight="25.0" prefWidth="124.0" />
          </children></Pane>
-      <Pane fx:id="pane_courseAction" layoutX="50.0" layoutY="257.0" prefHeight="518.0" prefWidth="900.0" style="-fx-border-color: black; -fx-border-width: 5;" visible="false">
+      <Pane fx:id="pane_courseAction" layoutX="275.0" layoutY="319.0" prefHeight="400.0" prefWidth="550.0" style="-fx-border-color: black; -fx-border-width: 5;" visible="false">
          <children>
-            <Label layoutX="39.0" layoutY="57.0" prefHeight="25.0" prefWidth="78.0" text="Course Name" />
-            <Label layoutX="39.0" layoutY="131.0" prefHeight="25.0" prefWidth="90.0" text="Instructor" />
-            <Label layoutX="39.0" layoutY="223.0" prefHeight="25.0" prefWidth="90.0" text="Available" />
-            <TextField fx:id="tf_courseName" layoutX="165.0" layoutY="57.0" />
-            <Button fx:id="btn_courseConfirm" layoutX="388.0" layoutY="417.0" mnemonicParsing="false" prefHeight="87.0" prefWidth="124.0" text="CONFIRM" />
-            <ComboBox fx:id="combo_instructors" layoutX="164.0" layoutY="100.0" prefHeight="87.0" prefWidth="313.0" promptText="Choose an Instructor" />
+            <Label layoutX="37.0" layoutY="47.0" prefHeight="26.0" prefWidth="72.0" text="Course Name" />
+            <Label layoutX="15.0" layoutY="104.0" prefHeight="25.0" prefWidth="98.0" text="Instructor" />
+            <Label layoutX="23.0" layoutY="223.0" prefHeight="25.0" prefWidth="87.0" text="Available" />
+            <TextField fx:id="tf_courseName" layoutX="134.0" layoutY="41.0" prefHeight="26.0" prefWidth="197.0" />
+            <Button fx:id="btn_courseConfirm" layoutX="178.0" layoutY="340.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="150.0" text="CONFIRM" />
+            <ComboBox fx:id="combo_instructors" layoutX="166.0" layoutY="107.0" prefHeight="72.0" prefWidth="241.0" promptText="Choose an Instructor" />
             <ComboBox fx:id="combo_available" layoutX="164.0" layoutY="223.0" prefWidth="150.0">
                 <items>
                     <FXCollections fx:factory="observableArrayList">
@@ -55,7 +99,40 @@
                 </items>
             </ComboBox>
          </children></Pane>
-      <Button fx:id="btn_addUser" layoutX="386.0" layoutY="56.0" mnemonicParsing="false" text="Add User" />
-      <Button fx:id="btn_addCourse" layoutX="507.0" layoutY="56.0" mnemonicParsing="false" text="Add Course" />
+      <Button fx:id="btn_addUser" layoutX="451.0" layoutY="145.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #00a65a;" text="Add User" textAlignment="CENTER" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/add-user (2).png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="btn_addCourse" layoutX="806.0" layoutY="145.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="160.0" style="-fx-background-color: #dd4c39;" text="Add Course" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="60.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/add.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Pane layoutY="80.0" prefHeight="669.0" prefWidth="200.0" style="-fx-background-color: #070675;">
+         <children>
+            <Pane prefHeight="670.0" prefWidth="200.0" style="-fx-background-color: #070675;">
+               <children>
+                  <Text fill="WHITE" layoutX="12.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Admin View">
+                     <font>
+                        <Font name="System Bold" size="31.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

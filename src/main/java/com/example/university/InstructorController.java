@@ -16,7 +16,7 @@ import java.util.ResourceBundle;
 public class InstructorController implements Initializable {
 
     @FXML
-    Button btn_viewCourses;
+    Button btn_viewCourses, btn_logout;
 
     @FXML
     TableView table_results;
@@ -25,6 +25,11 @@ public class InstructorController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         table_results.setPlaceholder(new Label("No Results"));
+
+        btn_logout.setOnAction(event -> {
+            Main.id = -1;
+            HomeUtil.changeScene("Login.fxml", "Login", 850, 640);
+        });
 
         btn_viewCourses.setOnAction(event -> {
 

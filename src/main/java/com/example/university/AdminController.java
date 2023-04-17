@@ -18,7 +18,7 @@ import java.util.ResourceBundle;
 public class AdminController implements Initializable {
 
     @FXML
-    Button btn_getUsers, btn_getCourses, btn_userConfirm, btn_courseConfirm, btn_addUser, btn_addCourse;
+    Button btn_getUsers, btn_getCourses, btn_userConfirm, btn_courseConfirm, btn_addUser, btn_addCourse, btn_logout;
 
     @FXML
     ComboBox combo_users, combo_instructors, combo_available;
@@ -37,6 +37,11 @@ public class AdminController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        btn_logout.setOnAction(event -> {
+            Main.id = -1;
+            HomeUtil.changeScene("Login.fxml", "Login", 850, 640);
+        });
 
         btn_addUser.setOnAction(event -> {
             Admin admin = new Admin();

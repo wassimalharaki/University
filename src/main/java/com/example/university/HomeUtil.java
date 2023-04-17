@@ -3,6 +3,7 @@ package com.example.university;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.stage.Screen;
 import org.hibernate.query.Query;
 import org.hibernate.resource.transaction.spi.TransactionStatus;
 import org.mindrot.jbcrypt.BCrypt;
@@ -15,6 +16,8 @@ public class HomeUtil {
         Main.stage.setTitle(title);
         try {
             Main.stage.setScene(new Scene(fxmlLoader.load(), width, height));
+            Main.stage.setX((Screen.getPrimary().getVisualBounds().getWidth() - Main.stage.getWidth()) / 2);
+            Main.stage.setY((Screen.getPrimary().getVisualBounds().getHeight() - Main.stage.getHeight()) / 2);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
@@ -46,11 +49,11 @@ public class HomeUtil {
 
         Main.id = current.getId();
         if (current.getRole().equals("s"))
-            changeScene("student.fxml", "Welcome Student", 1000, 800);
+            changeScene("student.fxml", "Welcome Student", 1000, 750);
         else if (current.getRole().equals("a"))
-            changeScene("admin.fxml", "Welcome Admin", 1000, 800);
+            changeScene("admin.fxml", "Welcome Admin", 1000, 750);
         else if (current.getRole().equals("i"))
-            changeScene("instructor.fxml", "Welcome Instructor", 1000, 800);
+            changeScene("instructor.fxml", "Welcome Instructor", 1000, 750);
     }
 
     public static void signup(String name, String email, String pass, String confPass) {
@@ -90,10 +93,12 @@ public class HomeUtil {
             int id = ((User) query.getResultList().get(0)).getId();
 
             Main.id = id;
-            changeScene("student.fxml", "Welcome Student", 1000, 800);
+            changeScene("student.fxml", "Welcome Student", 850, 640);
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());
         }
     }
+
+
 }

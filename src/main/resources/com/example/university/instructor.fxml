@@ -1,11 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.InstructorController">
+<AnchorPane prefHeight="750.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.university.InstructorController">
    <children>
-      <Button fx:id="btn_viewCourses" layoutX="403.0" layoutY="54.0" mnemonicParsing="false" prefHeight="100.0" prefWidth="200.0" text="View Courses" style="-fx-background-color: #3f51b5; -fx-text-fill: #ffffff;" />
-      <TableView fx:id="table_results" layoutX="300.0" layoutY="262.0" prefHeight="487.0" prefWidth="450.0" />
+      <ImageView fitHeight="750.0" fitWidth="999.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/uobseg.jpg" />
+         </image>
+      </ImageView>
+      <TableView fx:id="table_results" layoutX="252.0" layoutY="218.0" prefHeight="487.0" prefWidth="319.0" />
+      <Pane prefHeight="80.0" prefWidth="1000.0" style="-fx-background-color: #070675;">
+         <children>
+            <ImageView fitHeight="64.0" fitWidth="160.0" layoutX="23.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../images/UOB_EN_White.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="btn_logout" layoutX="899.0" layoutY="27.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="80.0" style="-fx-background-color: orange;" text="Logout">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutY="80.0" prefHeight="679.0" prefWidth="200.0" style="-fx-background-color: #070675;">
+         <children>
+            <Button fx:id="btn_viewCourses" layoutX="26.0" layoutY="69.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="149.0" style="-fx-background-color: #070675; -fx-border-style: solid; -fx-border-color: orange; -fx-border-width: 0 0 1 0; -fx-text-fill: #ffffff;" text="View Courses" />
+         </children>
+      </Pane>
+      <Pane layoutX="639.0" layoutY="111.0" prefHeight="607.0" prefWidth="318.0" style="-fx-background-color: white; -fx-opacity: 0.8;">
+         <children>
+            <Line endX="176.2750244140625" endY="1.52587890625E-5" layoutX="120.0" layoutY="171.0" startX="-100.0" stroke="#00aff0" style="-fx-stroke-width: 2;" />
+            <Text fill="#070675" layoutX="94.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© 2023 - All Rights Reserved.">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Text>
+            <Text fill="#00aff0" layoutX="35.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A FORWARD-THINKING " wrappingWidth="288.4698486328125">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text fill="#070675" layoutX="35.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="INSTITUTION FOR HIGHER EDUCATION" wrappingWidth="288.4698486328125">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="19.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Choose a major you like, because if you like something, you can excel in it and become successful.&quot;" wrappingWidth="288.4698486328125" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
