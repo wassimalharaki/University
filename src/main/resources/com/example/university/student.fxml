@@ -47,7 +47,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="btn_getAllCourses" layoutX="577.0" layoutY="166.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="160.0" style="-fx-background-color: #070675; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: orange; -fx-text-fill: #ffffff;" text="Get All Courses">
+      <Button fx:id="btn_getAllCourses" layoutX="577.0" layoutY="166.0" mnemonicParsing="false" prefHeight="65.0" prefWidth="160.0" style="-fx-background-color: #070675; -fx-border-style: solid; -fx-border-width: 0 0 1 0; -fx-border-color: orange; -fx-text-fill: #ffffff;" text="Get Availalable Courses">
          <font>
             <Font size="13.0" />
          </font>
