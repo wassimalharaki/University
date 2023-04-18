@@ -92,7 +92,7 @@ public class HomeUtil {
             int id = ((User) query.getResultList().get(0)).getId();
 
             Main.id = id;
-            changeScene("student.fxml", "Welcome Student", 850, 640);
+            changeScene("student.fxml", "Welcome Student", 1000, 750);
         } catch (Exception e) {
             Main.transaction.rollback();
             System.out.println(e.getMessage());

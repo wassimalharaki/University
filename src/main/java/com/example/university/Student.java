@@ -5,7 +5,7 @@ import org.hibernate.resource.transaction.spi.TransactionStatus;
 
 import java.util.List;
 
-public class Student extends  User{
+public class Student extends  User {
 
     public List<Course> getRegisteredCourses() {
         String hql = "SELECT course FROM Registration WHERE user = :student";
@@ -16,7 +16,7 @@ public class Student extends  User{
     public List<Course> getAvailableCourses() {
         List<Course> registeredCourses = getRegisteredCourses();
         List<Course> availableCourses = Course.getAvailableCourses();
-        for(Course course: registeredCourses)
+        for (Course course: registeredCourses)
             availableCourses.remove(course);
         return availableCourses;
     }
