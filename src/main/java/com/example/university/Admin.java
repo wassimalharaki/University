@@ -59,6 +59,20 @@ public class Admin extends User {
         removeUser(user);
     }
     public void removeUser(User user) {
+        List<Registration> registrations = getRegistrations();
+        for (Registration registration: registrations) {
+            if (registration.getUser().getId() == user.getId()) {
+                try {
+                    Main.transaction.begin();
+                    Main.session.delete(registration);
+                    if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                        Main.transaction.commit();
+                } catch (Exception e) {
+                    Main.transaction.rollback();
+                    System.out.println(e.getMessage());
+                }
+            }
+        }
         try {
             Main.transaction.begin();
             Main.session.delete(user);
