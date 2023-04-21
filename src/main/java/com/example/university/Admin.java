@@ -60,8 +60,8 @@ public class Admin extends User {
     }
     public void removeUser(User user) {
         List<Registration> registrations = getRegistrations();
-        for (Registration registration: registrations) {
-            if (registration.getUser().getId() == user.getId()) {
+        for (Registration registration: registrations)
+            if (registration.getUser().getId() == user.getId())
                 try {
                     Main.transaction.begin();
                     Main.session.delete(registration);
@@ -71,8 +71,6 @@ public class Admin extends User {
                     Main.transaction.rollback();
                     System.out.println(e.getMessage());
                 }
-            }
-        }
         try {
             Main.transaction.begin();
             Main.session.delete(user);
