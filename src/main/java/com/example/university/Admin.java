@@ -54,23 +54,30 @@ public class Admin extends User {
     }
 
     public void removeUser(int id) {
-        User user = new User();
-        user.setId(id);
+        User user = Main.session.get(User.class, id);
         removeUser(user);
     }
     public void removeUser(User user) {
-        List<Registration> registrations = getRegistrations();
-        for (Registration registration: registrations)
-            if (registration.getUser().getId() == user.getId())
-                try {
-                    Main.transaction.begin();
-                    Main.session.delete(registration);
-                    if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
-                        Main.transaction.commit();
-                } catch (Exception e) {
-                    Main.transaction.rollback();
-                    System.out.println(e.getMessage());
-                }
+        if (user.getRole().equals("s")) {
+            List<Registration> registrations = getRegistrations();
+            for (Registration registration: registrations)
+                if (registration.getUser().getId() == user.getId())
+                    try {
+                        Main.transaction.begin();
+                        Main.session.delete(registration);
+                        if (Main.transaction.getStatus().equals(TransactionStatus.ACTIVE))
+                            Main.transaction.commit();
+                    } catch (Exception e) {
+                        Main.transaction.rollback();
+                        System.out.println(e.getMessage());
+                    }
+        }
+        else if (user.getRole().equals("i")) {
+            List<Course> courses = Course.getAllCourses();
+            for (Course course: courses)
+                if (course.getInstructor().getId() == user.getId())
+                    course.setInstructor(null);
+        }
         try {
             Main.transaction.begin();
             Main.session.delete(user);
